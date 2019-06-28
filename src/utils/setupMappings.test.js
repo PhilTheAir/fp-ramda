@@ -5,7 +5,7 @@ import {
   prop
 } from 'ramda';
 import {
-  setupMappingsResult
+  getMappingsResult
 } from './setupMappings';
 
 describe('setupMappings', () => {
@@ -65,7 +65,7 @@ describe('setupMappings', () => {
       isPointsEarnedLessThanPointsClubPlus: false,
       isPointsEarnedMoreThanPointsClubPlus: false
     };
-    const result = setupMappingsResult(TIMELINE_MATRIX_TABLE).find(
+    const result = getMappingsResult(TIMELINE_MATRIX_TABLE).find(
       rule => whereEq(rule.tests)(dataToBeTested)
     );
     expect(
@@ -86,7 +86,7 @@ describe('setupMappings', () => {
       isPointsEarnedLessThanPointsClubPlus: false,
       isPointsEarnedMoreThanPointsClubPlus: false
     };
-    const result = setupMappingsResult(TIMELINE_MATRIX_TABLE).find(
+    const result = getMappingsResult(TIMELINE_MATRIX_TABLE).find(
       rule => whereEq(rule.tests)(dataToBeTested)
     );
     expect(
@@ -107,7 +107,7 @@ describe('setupMappings', () => {
       isPointsEarnedLessThanPointsClubPlus: false,
       isPointsEarnedMoreThanPointsClubPlus: false
     };
-    const result = setupMappingsResult(TIMELINE_MATRIX_TABLE).find(
+    const result = getMappingsResult(TIMELINE_MATRIX_TABLE).find(
       rule => whereEq(rule.tests)(dataToBeTested)
     );
     expect(

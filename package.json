@@ -3,13 +3,18 @@
   "version": "0.0.1",
   "description": "",
   "scripts": {
-    "start": "node ./src/index.js",
+    "start": "nodemon --exec babel-node ./src/index.js",
     "test": "jest --watch"
   },
   "author": "Liwen (Phil) Chen <clw.air@gmail.com>",
   "license": "ISC",
   "devDependencies": {
-    "jest": "^21.2.1"
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.5",
+    "@babel/node": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "jest": "^21.2.1",
+    "nodemon": "^1.19.1"
   },
   "jest": {
     "transform": {

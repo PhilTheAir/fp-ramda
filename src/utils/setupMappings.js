@@ -10,4 +10,4 @@ export const setupMappings = length => arr =>
     values: takeLast(length, rule)
   }));
 
-export const setupMappingsResult = setupMappings(1);
+export const getMappingsResult = setupMappings(1);

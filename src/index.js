@@ -1,13 +1,15 @@
 import { 
-  input 
+  input, 
+  output 
 } from './__fixtures__/mocks';
+import {
+  transforms
+} from './utils';
 
-const timelineProps = getTimelineProps(
-  pointsClubData,
-  pointsClubLink,
-  pointsClubPlusLink
+const result = transforms(
+  input,
+  "link1",
+  "link2"
 );
 
-console.log(blockchain);
-
-console.log(JSON.stringify(blockchain));
+console.log(result === output, result);

@@ -1,4 +1,4 @@
-import getRatio from './getRatio';
+import getRatio from './applyRatio';
 
 describe('getRatio', () => {
   it('Should return correct percentage', () => {
