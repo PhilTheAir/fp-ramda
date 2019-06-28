@@ -6,7 +6,7 @@ import {
 } from 'ramda';
 import {
   getMappingsResult
-} from './setupMappings';
+} from './';
 
 describe('setupMappings', () => {
   const TIMELINE_MATRIX_TABLE = [
