@@ -30,7 +30,7 @@ describe('getTimelineProps', () => {
       const timeLineItems = compose(
         assocPath(['currentLevel', 'type'], 'POINTS_CLUB_BASE'),
         assocPath(['targetPoints'], 150000),
-        assocPath(['pointsEarnedCurrentYear'], 1000)
+        assocPath(['pointsEarned'], 1000)
       )(pointsClubData);
       const result = getTimelineProps(
         timeLineItems,
@@ -47,7 +47,7 @@ describe('getTimelineProps', () => {
       const timeLineItems = compose(
         assocPath(['currentLevel', 'type'], 'POINTS_CLUB'),
         assocPath(['targetPoints'], 150000),
-        assocPath(['pointsEarnedCurrentYear'], 1000)
+        assocPath(['pointsEarned'], 1000)
       )(pointsClubData);
       const result = getTimelineProps(
         timeLineItems,
@@ -64,7 +64,7 @@ describe('getTimelineProps', () => {
       const timeLineItems = compose(
         assocPath(['currentLevel', 'type'], 'POINTS_CLUB'),
         assocPath(['targetPoints'], 300000),
-        assocPath(['pointsEarnedCurrentYear'], 150001)
+        assocPath(['pointsEarned'], 150001)
       )(pointsClubData);
       const result = getTimelineProps(
         timeLineItems,
@@ -82,7 +82,7 @@ describe('getTimelineProps', () => {
       const timeLineItems = compose(
         assocPath(['currentLevel', 'type'], 'POINTS_CLUB_PLUS'),
         assocPath(['targetPoints'], 300000),
-        assocPath(['pointsEarnedCurrentYear'], 1500)
+        assocPath(['pointsEarned'], 1500)
       )(pointsClubData);
       const result = getTimelineProps(
         timeLineItems,
@@ -100,7 +100,7 @@ describe('getTimelineProps', () => {
       const timeLineItems = compose(
         assocPath(['currentLevel', 'type'], 'POINTS_CLUB_PLUS'),
         assocPath(['targetPoints'], 300000),
-        assocPath(['pointsEarnedCurrentYear'], 150001)
+        assocPath(['pointsEarned'], 150001)
       )(pointsClubData);
       const result = getTimelineProps(
         timeLineItems,
@@ -118,7 +118,7 @@ describe('getTimelineProps', () => {
       const timeLineItems = compose(
         assocPath(['currentLevel', 'type'], 'POINTS_CLUB_PLUS'),
         assocPath(['targetPoints'], 300000),
-        assocPath(['pointsEarnedCurrentYear'], 300001)
+        assocPath(['pointsEarned'], 300001)
       )(pointsClubData);
       const result = getTimelineProps(
         timeLineItems,

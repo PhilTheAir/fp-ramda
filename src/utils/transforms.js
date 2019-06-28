@@ -1,11 +1,4 @@
 import {
-  getTierPoints,
-  boolPair,
-  setupMappingsResult,
-  formatNumber,
-  getRatio
- } from '.';
-import {
   assoc,
   ascend,
   compose,
@@ -24,149 +17,126 @@ import {
   whereEq,
   __
 } from 'ramda';
+import {
+  getTierPoints,
+  isM1,
+  isM1,
+  isM1,
+  isM1,
+  setupMappingsResult,
+  formatNumber,
+  getRatio
+ } from '.';
 
-export const POINTS_CLUB_BASE = 'POINTS_CLUB_BASE';
-export const POINTS_CLUB = 'POINTS_CLUB';
-export const POINTS_CLUB_PLUS = 'POINTS_CLUB_PLUS';
+export const m1 = "m1";
+export const m2 = "m2";
+export const m3 = "m3";
 
-export const TIMELINE_RANGE_BASE_TO_CLUB = [POINTS_CLUB_BASE, POINTS_CLUB];
-export const TIMELINE_RANGE_BASE_TO_CLUB_PLUS = [
-  POINTS_CLUB_BASE,
-  POINTS_CLUB,
-  POINTS_CLUB_PLUS
+export const basicArr = [m1, m2];
+export const fullArr = [
+  m1,
+  m2,
+  m3
 ];
 
-export const TIMELINE_ITEMS = () => ({
-  POINTS_CLUB_BASE: {
-    type: POINTS_CLUB_BASE,
+export const mInfo = {
+  m1: {
+    type: m1,
     title: '0',
     subTitle: '',
-    imageColor: Variables.red,
+    imageColor: "red",
     imageAlt: ''
   },
-  POINTS_CLUB: {
-    type: POINTS_CLUB,
+  m2: {
+    type: m2,
     title: '',
-    subTitle: 'Points Club',
+    subTitle: 'subTitle1',
     url: '',
-    imageColor: Variables.pointsClub,
-    imageAlt: 'Points Club'
+    imageColor: "green",
+    imageAlt: 'subTitleAlt1'
   },
-  POINTS_CLUB_PLUS: {
-    type: POINTS_CLUB_PLUS,
+  m3: {
+    type: m3,
     title: '',
-    subTitle: 'Points Club Plus',
+    subTitle: 'subTitle1',
     url: '',
-    imageColor: Variables.pointsClubPlus,
-    imageAlt: 'Points Club Plus'
+    imageColor: "blue",
+    imageAlt: 'subTitleAlt1'
   }
-});
+};
 
-const tier1 = props(TIMELINE_RANGE_BASE_TO_CLUB)(TIMELINE_ITEMS());
-const tier2 = props(TIMELINE_RANGE_BASE_TO_CLUB_PLUS)(TIMELINE_ITEMS());
+const tier1 = props(basicArr)(mInfo);
+const tier2 = props(fullArr)(mInfo);
 const tier3 = [];
 
-const TIMELINE_ITEMS_TO_RENDER = () => ({
-  tier1,
-  tier2,
-  tier3
-});
 
-/*###########################################################
-Create rules statements
-###########################################################*/
-const isPointsClubBase = boolPair('isPointsClubBase');
-const isPointsClub = boolPair('isPointsClub');
-const isPointsClubPlus = boolPair('isPointsClubPlus');
-const isPointsEarnedLessThanPointsClub = boolPair(
-  'isPointsEarnedLessThanPointsClub'
-);
-const isPointsEarnedMoreThanPointsClub = boolPair(
-  'isPointsEarnedMoreThanPointsClub'
-);
-const isPointsEarnedLessThanPointsClubPlus = boolPair(
-  'isPointsEarnedLessThanPointsClubPlus'
-);
-const isPointsEarnedMoreThanPointsClubPlus = boolPair(
-  'isPointsEarnedMoreThanPointsClubPlus'
-);
 
-/*###########################################################
-Create rules matrix table which is translated from:
-https://jira.qantas.com.au/browse/RHLP-515
-###########################################################*/
-const TIMELINE_MATRIX_TABLE = [
-  [isPointsClubBase(true), TIMELINE_ITEMS_TO_RENDER().tier1],
+
+const matrixSet = [
+  [isM1(true), tier1],
   [
-    isPointsClub(true),
-    isPointsEarnedLessThanPointsClub(true),
-    TIMELINE_ITEMS_TO_RENDER().tier1
+    isM2(true),
+    isP1(true),
+    tier1
   ],
   [
-    isPointsClub(true),
-    isPointsEarnedMoreThanPointsClub(true),
-    TIMELINE_ITEMS_TO_RENDER().tier2
+    isM2(true),
+    isP2(true),
+    tier2
   ],
   [
-    isPointsClubPlus(true),
-    isPointsEarnedLessThanPointsClubPlus(true),
-    TIMELINE_ITEMS_TO_RENDER().tier2
+    isM3(true),
+    isP3(true),
+    tier2
   ],
   [
-    isPointsClubPlus(true),
-    isPointsEarnedMoreThanPointsClubPlus(true),
-    TIMELINE_ITEMS_TO_RENDER().tier3
+    isM3(true),
+    isP4(true),
+    tier3
   ]
 ];
 
-/*###########################################################
-construct abstracted result to be tested by matrix rules
-each user data can be translated into true or false statements
-###########################################################*/
 const currentLevelType = path(['currentLevel', 'type']);
-const pointsEarnedCurrentYear = prop('pointsEarnedCurrentYear');
+const pointsEarned = prop('pointsEarned');
 
-const getAbstractedMatrix = levels =>
+const setUpMatrixRules = levels =>
 pipe(
   applySpec({
-    isPointsClubBase: compose(
-      equals(POINTS_CLUB_BASE),
+    isM1: compose(
+      equals(m1),
       currentLevelType
     ),
-    isPointsClub: compose(
-      equals(POINTS_CLUB),
+    isM2: compose(
+      equals(m2),
       currentLevelType
     ),
-    isPointsClubPlus: compose(
-      equals(POINTS_CLUB_PLUS),
+    isM3: compose(
+      equals(m3),
       currentLevelType
     ),
-    isPointsEarnedLessThanPointsClub: compose(
-      lt(__, levels.POINTS_CLUB),
-      pointsEarnedCurrentYear
+    isP1: compose(
+      lt(__, levels.m2),
+      pointsEarned
     ),
-    isPointsEarnedMoreThanPointsClub: compose(
-      gte(__, levels.POINTS_CLUB),
-      pointsEarnedCurrentYear
+    isP2: compose(
+      gte(__, levels.m2),
+      pointsEarned
     ),
-    isPointsEarnedLessThanPointsClubPlus: compose(
-      lt(__, levels.POINTS_CLUB_PLUS),
-      pointsEarnedCurrentYear
+    isP3: compose(
+      lt(__, levels.m3),
+      pointsEarned
     ),
-    isPointsEarnedMoreThanPointsClubPlus: compose(
-      gte(__, levels.POINTS_CLUB_PLUS),
-      pointsEarnedCurrentYear
+    isP4: compose(
+      gte(__, levels.m3),
+      pointsEarned
     )
   })
 );
 
-/*###########################################################
-apply points and title to the result 
-###########################################################*/
 const applyPoints = levelsOfPoints => item =>
   assoc('points', prop(prop('type', item), levelsOfPoints), item);
 const applyTitle = item => assoc('title', formatNumber(item.points), item);
-const getPointsAndTitle = levelsOfPoints =>
+const getPointsTitle = levelsOfPoints =>
   map(
     compose(
       applyTitle,
@@ -181,23 +151,17 @@ const getMaxPoints = compose(
   sort(ascend(prop('points')))
 );
 
-/*###########################################################
-apply percentage of width of each items to the result 
-###########################################################*/
-const assignPercentage = maxPoints => item =>
+const setRatio = maxPoints => item =>
   assoc('percentage', getRatio(prop('points', item), maxPoints), item);
-const applyPercentage = items => {
+const applyRatio = items => {
   const maxPoints = getMaxPoints(items);
-  return compose(map(assignPercentage(maxPoints)))(items);
+  return compose(map(setRatio(maxPoints)))(items);
 };
 
-/*###########################################################
-apply points club and points club urls to the result 
-###########################################################*/
 const assignPcpUrl = pcpUrl => item =>
-  equals(item.type, POINTS_CLUB_PLUS) ? assoc('url', pcpUrl, item) : item;
+  equals(item.type, m3) ? assoc('url', pcpUrl, item) : item;
 const assignPcUrl = pcUrl => item =>
-  equals(item.type, POINTS_CLUB) ? assoc('url', pcUrl, item) : item;
+  equals(item.type, m2) ? assoc('url', pcUrl, item) : item;
 const applyUrls = (pcUrl, pcpUrl) =>
   map(
     compose(
@@ -206,38 +170,35 @@ const applyUrls = (pcUrl, pcpUrl) =>
     )
   );
 
-const getTimelineItems = (levelsOfPoints, pcUrl, pcpUrl) =>
+const getItems = (levelsOfPoints, pcUrl, pcpUrl) =>
   compose(
     applyUrls(pcUrl, pcpUrl),
-    applyPercentage,
-    getPointsAndTitle(levelsOfPoints)
+    applyRatio,
+    getPointsTitle(levelsOfPoints)
   );
 
-const getCurrentPoint = (pointsEarnedCurrentYear, targetPoints) => ({
-  points: pointsEarnedCurrentYear,
-  title: formatNumber(pointsEarnedCurrentYear),
-  percentage: getRatio(pointsEarnedCurrentYear, targetPoints)
+const getPoints = (pointsEarned, targetPoints) => ({
+  points: pointsEarned,
+  title: formatNumber(pointsEarned),
+  percentage: getRatio(pointsEarned, targetPoints)
 });
 
-/*************************************************
- * @param pointsClubData: Points Club response data
- *************************************************/
 export const transforms = (pointsClubData, pointsClubLink, pointsClubPlusLink) => {
-  const {levels, pointsEarnedCurrentYear, targetPoints} = pointsClubData;
+  const {levels, pointsEarned, targetPoints} = pointsClubData;
   const levelsOfPoints = getTierPoints(levels);
-  const abstracted = getAbstractedMatrix(levelsOfPoints)(pointsClubData);
-  const result = setupMappingsResult(TIMELINE_MATRIX_TABLE).find(rule =>
+  const abstracted = setUpMatrixRules(levelsOfPoints)(pointsClubData);
+  const result = setupMappingsResult(matrixSet).find(rule =>
     whereEq(rule.tests)(abstracted)
   );
 
   if (result) {
     return {
-      items: getTimelineItems(
+      items: getItems(
         levelsOfPoints,
         pointsClubLink,
         pointsClubPlusLink
       )(result.values[0]),
-      current: getCurrentPoint(pointsEarnedCurrentYear, targetPoints)
+      current: getPoints(pointsEarned, targetPoints)
     };
   }
   return [];

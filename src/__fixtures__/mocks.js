@@ -1,7 +1,7 @@
 export const input = {
   startDate: '2019-02-01',
   endDate: '2020-06-30',
-  pointsEarnedCurrentYear: 299999,
+  pointsEarned: 299999,
   pointsRemaining: 30001,
   targetPoints: 300000,
   airPoints: 0,
