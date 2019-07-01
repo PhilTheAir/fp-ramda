@@ -28,7 +28,7 @@ describe('getTimelineProps', () => {
   describe('should return correct items props to render', () => {
     it('should return 2 items when in base level and Points Club level when user is in Base tier', () => {
       const timeLineItems = compose(
-        assocPath(['currentLevel', 'type'], 'POINTS_CLUB_BASE'),
+        assocPath(['currentLevel', 'type'], 'PCB'),
         assocPath(['targetPoints'], 150000),
         assocPath(['pointsEarned'], 1000)
       )(pointsClubData);
@@ -38,14 +38,14 @@ describe('getTimelineProps', () => {
         pointsClubPlusLink
       );
       expect(result.items.length).toEqual(2);
-      expect(result.items[0].type).toEqual('POINTS_CLUB_BASE');
-      expect(result.items[1].type).toEqual('POINTS_CLUB');
+      expect(result.items[0].type).toEqual('PCB');
+      expect(result.items[1].type).toEqual('PC');
       expect(result.current.percentage).toEqual(0.6666666666666667);
     });
 
     it('should return 2 items to render when is in Points Club level and points earned is less than points club points', () => {
       const timeLineItems = compose(
-        assocPath(['currentLevel', 'type'], 'POINTS_CLUB'),
+        assocPath(['currentLevel', 'type'], 'PC'),
         assocPath(['targetPoints'], 150000),
         assocPath(['pointsEarned'], 1000)
       )(pointsClubData);
@@ -55,14 +55,14 @@ describe('getTimelineProps', () => {
         pointsClubPlusLink
       );
       expect(result.items.length).toEqual(2);
-      expect(result.items[0].type).toEqual('POINTS_CLUB_BASE');
-      expect(result.items[1].type).toEqual('POINTS_CLUB');
+      expect(result.items[0].type).toEqual('PCB');
+      expect(result.items[1].type).toEqual('PC');
       expect(result.current.percentage).toEqual(0.6666666666666667);
     });
 
     it('should return 3 items to render when is in Points Club level and points earned is more than points club points', () => {
       const timeLineItems = compose(
-        assocPath(['currentLevel', 'type'], 'POINTS_CLUB'),
+        assocPath(['currentLevel', 'type'], 'PC'),
         assocPath(['targetPoints'], 300000),
         assocPath(['pointsEarned'], 150001)
       )(pointsClubData);
@@ -72,15 +72,15 @@ describe('getTimelineProps', () => {
         pointsClubPlusLink
       );
       expect(result.items.length).toEqual(3);
-      expect(result.items[0].type).toEqual('POINTS_CLUB_BASE');
-      expect(result.items[1].type).toEqual('POINTS_CLUB');
-      expect(result.items[2].type).toEqual('POINTS_CLUB_PLUS');
+      expect(result.items[0].type).toEqual('PCB');
+      expect(result.items[1].type).toEqual('PC');
+      expect(result.items[2].type).toEqual('PCP');
       expect(result.current.percentage).toEqual(50.00033333333334);
     });
 
     it('should return 3 items to render when is in Points Club Plus level and points earned is less than Points Club Points', () => {
       const timeLineItems = compose(
-        assocPath(['currentLevel', 'type'], 'POINTS_CLUB_PLUS'),
+        assocPath(['currentLevel', 'type'], 'PCP'),
         assocPath(['targetPoints'], 300000),
         assocPath(['pointsEarned'], 1500)
       )(pointsClubData);
@@ -90,15 +90,15 @@ describe('getTimelineProps', () => {
         pointsClubPlusLink
       );
       expect(result.items.length).toEqual(3);
-      expect(result.items[0].type).toEqual('POINTS_CLUB_BASE');
-      expect(result.items[1].type).toEqual('POINTS_CLUB');
-      expect(result.items[2].type).toEqual('POINTS_CLUB_PLUS');
+      expect(result.items[0].type).toEqual('PCB');
+      expect(result.items[1].type).toEqual('PC');
+      expect(result.items[2].type).toEqual('PCP');
       expect(result.current.percentage).toEqual(0.5);
     });
 
     it('should return 3 items to render when is in Points Club Plus level and points earned is more than Points Club points and less than Points Club Plus', () => {
       const timeLineItems = compose(
-        assocPath(['currentLevel', 'type'], 'POINTS_CLUB_PLUS'),
+        assocPath(['currentLevel', 'type'], 'PCP'),
         assocPath(['targetPoints'], 300000),
         assocPath(['pointsEarned'], 150001)
       )(pointsClubData);
@@ -108,15 +108,15 @@ describe('getTimelineProps', () => {
         pointsClubPlusLink
       );
       expect(result.items.length).toEqual(3);
-      expect(result.items[0].type).toEqual('POINTS_CLUB_BASE');
-      expect(result.items[1].type).toEqual('POINTS_CLUB');
-      expect(result.items[2].type).toEqual('POINTS_CLUB_PLUS');
+      expect(result.items[0].type).toEqual('PCB');
+      expect(result.items[1].type).toEqual('PC');
+      expect(result.items[2].type).toEqual('PCP');
       expect(result.current.percentage).toEqual(50.000333333333334);
     });
 
     it('should return 0 item to render when is in Points Club Plus level and points earned is more than Points Club Plus', () => {
       const timeLineItems = compose(
-        assocPath(['currentLevel', 'type'], 'POINTS_CLUB_PLUS'),
+        assocPath(['currentLevel', 'type'], 'PCP'),
         assocPath(['targetPoints'], 300000),
         assocPath(['pointsEarned'], 300001)
       )(pointsClubData);

@@ -12,28 +12,28 @@ export const input = {
   remainingWeeks: '2',
   remainingMonths: '12',
   currentLevel: {
-    type: 'POINTS_CLUB',
+    type: 'PC',
     description: 'Points Club',
     targetPoints: 300000
   },
   nextLevel: {
-    type: 'POINTS_CLUB_PLUS',
+    type: 'PCP',
     description: 'Points Club Plus',
     targetPoints: 300000
   },
   levels: [
     {
-      type: 'POINTS_CLUB_BASE',
+      type: 'PCB',
       description: 'Base Level',
       targetPoints: 0
     },
     {
-      type: 'POINTS_CLUB',
+      type: 'PC',
       description: 'Points Club',
       targetPoints: 150000
     },
     {
-      type: 'POINTS_CLUB_PLUS',
+      type: 'PCP',
       description: 'Points Club Plus',
       targetPoints: 300000
     }
@@ -58,31 +58,25 @@ export const input = {
 export const output = {
   items: [
     {
-      type: 'POINTS_CLUB_BASE',
+      type: 'PCB',
       title: '0',
       subTitle: '',
-      imageColor: '#ee0000',
-      imageAlt: '',
       points: 0,
       percentage: 0
     },
     {
-      type: 'POINTS_CLUB',
+      type: 'PC',
       title: '150,000',
       subTitle: 'Points Club',
       url: '#link1',
-      imageColor: '#168196',
-      imageAlt: 'Points Club',
       points: 150000,
       percentage: 50
     },
     {
-      type: 'POINTS_CLUB_PLUS',
+      type: 'PCP',
       title: '300,000',
       subTitle: 'Points Club Plus',
       url: '#link2',
-      imageColor: '#025795',
-      imageAlt: 'Points Club Plus',
       points: 300000,
       percentage: 100
     }

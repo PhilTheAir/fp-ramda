@@ -1,4 +1,6 @@
-import boolPair from './boolPair';
+import {
+  boolPair
+ } from './';
 
 describe('boolPair', () => {
   it('Should return a true pair when pass in true', () => {

@@ -1,13 +1,31 @@
-import getLevelOfPoints from './getTierPoints';
-import pointsClubData from '../_DATA/mockResponseData';
+import {
+  getTierPoints
+ } from './';
 
 describe('getTierPoints', () => {
-  it('Should return correct level and points info', () => {
-    const result = getLevelOfPoints(pointsClubData.levels);
+  it('Should return level and points info correctly', () => {
+    const levels = [
+      {
+        type: 'PCB',
+        description: 'Base Level',
+        targetPoints: 0
+      },
+      {
+        type: 'PC',
+        description: 'Points Club',
+        targetPoints: 150000
+      },
+      {
+        type: 'PCP',
+        description: 'Points Club Plus',
+        targetPoints: 300000
+      }
+    ];
+    const result = getTierPoints(levels);
     expect(result).toEqual({
-      POINTS_CLUB: 150000,
-      POINTS_CLUB_BASE: 0,
-      POINTS_CLUB_PLUS: 300000
+      PC: 150000,
+      PCB: 0,
+      PCP: 300000
     });
   });
 });
