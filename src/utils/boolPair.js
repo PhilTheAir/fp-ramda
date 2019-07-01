@@ -2,7 +2,7 @@ import {
   equals
 } from 'ramda';
 
-export const boolPair = property => (expected = null) => [
+export const boolPair = property => expected => [
   property,
   equals(true)(expected)
 ];
