@@ -4,7 +4,6 @@ import {
   gte,
   equals,
   applySpec,
-  pipe,
   path,
   prop,
   __
@@ -44,35 +43,33 @@ export const matrixSet = [
 ];
 
 export const setUpMatrixRules = levels =>
-  pipe(
-    applySpec({
-      isM1: compose(
-        equals(m1),
-        path(['currentLevel', 'type'])
-      ),
-      isM2: compose(
-        equals(m2),
-        path(['currentLevel', 'type'])
-      ),
-      isM3: compose(
-        equals(m3),
-        path(['currentLevel', 'type'])
-      ),
-      isP1: compose(
-        lt(__, levels.m2),
-        prop('pointsEarned')
-      ),
-      isP2: compose(
-        gte(__, levels.m2),
-        prop('pointsEarned')
-      ),
-      isP3: compose(
-        lt(__, levels.m3),
-        prop('pointsEarned')
-      ),
-      isP4: compose(
-        gte(__, levels.m3),
-        prop('pointsEarned')
-      )
-    })
-  );
+  applySpec({
+    isM1: compose(
+      equals(m1),
+      path(['currentLevel', 'type'])
+    ),
+    isM2: compose(
+      equals(m2),
+      path(['currentLevel', 'type'])
+    ),
+    isM3: compose(
+      equals(m3),
+      path(['currentLevel', 'type'])
+    ),
+    isP1: compose(
+      lt(__, levels.m2),
+      prop('pointsEarned')
+    ),
+    isP2: compose(
+      gte(__, levels.m2),
+      prop('pointsEarned')
+    ),
+    isP3: compose(
+      lt(__, levels.m3),
+      prop('pointsEarned')
+    ),
+    isP4: compose(
+      gte(__, levels.m3),
+      prop('pointsEarned')
+    )
+  });
