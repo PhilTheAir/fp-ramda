@@ -1,4 +1,6 @@
-import formatNumber from './formatNumber';
+import {
+  formatNumber
+} from './formatNumber';
 
 describe('formatNumber', () => {
   it('Should format the number to correct format', () => {

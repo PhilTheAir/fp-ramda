@@ -1,16 +1,11 @@
 export const formatNumber = str => {
-  const typeOfStr = typeof str;
-  switch (typeOfStr) {
-    case 'string': {
-      const num = parseInt(str);
-      const result = num.toLocaleString();
-      return result;
-    }
-    case 'number': {
-      const result = str.toLocaleString();
-      return result;
-    }
-    default:
-      return '0';
+  let result = "0";
+  try {
+    const num = Number(str);
+    result = num.toLocaleString();
+    return result;
+  }
+  catch {
+    return result;
   }
 };
