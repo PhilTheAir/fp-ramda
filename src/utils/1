@@ -1,0 +1,139 @@
+-
+Build a brand new Quoting app for customers to create and manage vehicle lease enquiries.
+-
+Use React.js and popular tanstack to build UI components and routers.
+-
+Employ Storybook as a primary tool for developing, visualising, and verifying the behaviour of UI
+components.
+-
+Leverage code generation (codegen) techniques with YAML files to accelerate the development of
+backend APIs.
+-
+Manage authentication with Auth0 for existing SG Fleet accounts.
+-
+Use pnpm as the package manager and Vite as the build tool.
+-
+Code is built and packaged via Azure DevOps pipelines, and published to Azure Artifacts.
+
+The Address Management Project for Westpac Products
+-
+Develop the address management UI for the Business/Corporate/Merchant portals.
+-
+Establish the micro frontend framework and define and implement the core UI components.
+-
+Build the Experience APIs using Node.js and TypeScript.
+Single Page Application repositories upgrade project
+-
+Migrate 5 MFE codebases and their respective experience APIs to Node.js 20.
+-
+Upgrade project dependencies within the five specified repositories to align with the latest Westpac
+component and service package versions.
+-
+Coordinate seamlessly with the QA team for the build, deployment, and execution of end-to-end (E2E)
+testing of the five micro frontends across all test environments.
+
+The One Service Qualification Project
+-
+Implement a unified product page that dynamically displays 4G, 5G, and nbn Home Fixed Wireless
+offerings.
+-
+Build scalable and responsive UI components using the combination of React and Tailwind CSS.
+-
+Develop the 4G/5G/nbn data services as microservices using .NET 8, exposing data via GraphQL.
+-
+Develop custom CI/CD workflows for the project repositories within the GitHub Actions ecosystem.
+AWS CloudFront upgrade project
+-
+Develop AWS Lambda handler functions in Python to manage and route incoming web requests at the
+origin level.
+-
+Develop comprehensive test suites using PyTest and manage test dependencies via Pipenv.
+Screen Reader enhancement project
+-
+Optimise the user interfaces in multiple repositories to meet WCAG (Web Content Accessibility
+Guidelines) standards regarding screen reader functionality.
+-
+Refine the ARIA Label usage to provide more descriptive context for screen reader users, ensure full
+compatibility and validation with three primary screen readers: NVDA on Desktop, iOS VoiceOver,
+and Android TalkBack
+
+Key projects:
+My Account 1.0 / 2.0
+-
+Establish architectural patterns for new React projects and perform targeted architectural refinements on
+existing code.
+-
+Develop encapsulated, high-performance widgets for AEM using React, Redux, and GraphQL.
+-
+Develop a standardised Qantas Design System component library, including an accordion module and a
+feature-rich drag-and-drop file upload component.
+
+Customers Application Tracking Project
+-
+Architect and develop projects using a standardised front-end stack: React, Redux, Redux-Saga, React
+Router and Styled-components.
+-
+Implement comprehensive unit test using the Jest framework and the Enzyme testing utility.
+-
+Architect and implement RESTful Experience APIs using Node.js and the Express.js framework.
+Real-time data visualisation and speculation project in global forex market
+-
+Develop real-time stock and forex charting components using the React ecosystem and
+modern ES6+ syntax.
+-
+Implement a comprehensive charting library with full functionality for over 18 unique graph patterns (14
+basic, 4 complex) that support interactive dragging for live updates.
+
+designing a
+capability to deliver better certainty in the project management of megaprojects. The
+following information will be helpful for you as context:
+Project Structure
+• Mega-projects typically involve multiple phases: design, procurement,
+construction, commissioning
+• Key stakeholders include: owners/clients, main contractors, subcontractors,
+suppliers, regulators
+• Projects typically have: master schedules with thousands of activities,
+numerous contract packages, complex dependencies, and strict milestone
+deadlines
+Contract Packages
+Contract packages are discrete portions of the overall project scope bundled
+together and awarded to specific contractors. For example, a rail project might have
+separate contract packages for:
+• Civil works (tunnels, bridges, earthworks)
+• Track installation
+• Electrical systems
+• Signalling and communications
+• Stations and buildings
+Each package has its own contract terms, schedule, budget, and risk profile.
+Interface risks between packages are particularly important as delays or issues in
+one package can impact others.
+Cost Elements
+• Labor, materials, equipment, overhead, contingency funds
+Available Knowledge and Historical Data
+Subject Matter Expert Knowledge
+A significant amount of knowledge about construction risks exists in the heads of
+Subject Matter Experts (SMEs) who have decades of experience managing similar
+projects. This includes:
+• Causal relationships between risk factors and actual risks
+• Early warning signs that precede major issues
+• Complex interdependencies between project elements
+• Context-specific risk interpretations that aren't captured in documentation
+• Tacit knowledge about effective mitigation strategies
+For this exercise, assume the following historical data could be available:
+1. Project Documentation
+o Complete contract documents from 15 similar past projects
+o Detailed schedules (baseline and actuals) from these projects
+2. Risk Registers
+o 2,000+ documented risks from past projects
+o Categorization of risks (commercial, technical, environmental, etc.)
+o Probability and impact assessments for each risk
+o Mitigation actions taken and their effectiveness
+3. External Data
+o Weather records for project locations
+o Material price indices
+o Labor market statistics
+o Building and Construction standards
+4. Unstructured Data
+o Meeting minutes from project reviews
+o Issue logs and action trackers
+o Lessons learned documents
